@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "style.css">
+    
+</head>
+<body>
+<div class="container">
+    <h1>Alarm Clock <span id = "bell">🔔</span></h1>
+    <h2 id="currentTime"></h2>
+
+    <div class="alarm-controls">
+        <input type="time" id="alarmTime">
+        <select id = "ringtone">
+            <option value = "classicAlarm.mp3">Classic Alarm ☺️</option>
+            <option value = "iphoneAlarm.mp3">Iphone Ringtone 🫠</option>
+            <option value = "alert.mp3">Alert 🚨</option>
+            <option value = "dhurandhar_rehman.mp3">Dhurandhar 🦹</option>
+            <option value = "Jogi.mp3">Jogi 🎧</option>
+            <option value = "illahi.mp3">Illahi 😊</option>
+            <option value = "chaleya.mp3">Challeya 🚶‍♂️</option>
+            <option value = "nadaaniyan.mp3">Nadaaniyan 😙</option>
+        </select>
+        <button id="setAlarm">Set Alarm</button>
+        <button id="previewBtn">Preview 🎵</button>
+    </div>
+
+    <p id="status"></p>
+
+    <div class="alarm-controls">
+        <button id="stopAlarm">Stop Alarm</button>
+        <button id="snoozeBtn">Snooze (1 min)</button>
+    </div>
+
+    <audio id="alarmSound"></audio>
+</div>
+    <script src = "first.js"></script>
+</body>
+</html>
