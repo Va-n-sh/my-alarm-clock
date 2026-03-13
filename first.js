@@ -1,6 +1,9 @@
 // getting ringtone
 const ringtone = document.querySelector("#ringtone");
 
+// for vibration 
+let vibrationInterval = null;
+
 //storing the input given by User
 
 let alarmSetFor = null;
@@ -32,6 +35,12 @@ snoozeBtn.addEventListener("click", ()=>{
     snoozeBtn.style.display = "none";
     bell.classList.remove("ringing");
 
+    if(navigator.vibrate){
+        navigator.vibrate(0);
+        clearInterval(vibrationInterval);
+        vibrationInterval = null;
+    }
+
     let now = new Date();
     now.setMinutes(now.getMinutes()+1);
     let h = now.getHours().toString().padStart(2,'0');
@@ -59,6 +68,14 @@ setInterval(()=>{
         alarmSound.src = ringtone.value;
         alarmSound.loop = true;
         alarmSound.play();
+
+        if(navigator.vibrate){
+            navigator.vibrate([1000,500]);
+            vibrationInterval = setInterval(()=>{
+                navigator.vibrate([1000,500]);
+            }, 1500);
+        }
+
         isRinging = true;
         stopAlarm.style.display = "block";
         snoozeBtn.style.display = "block";
@@ -86,6 +103,11 @@ stopAlarm.addEventListener("click", ()=>{
     document.body.classList.remove("flash");
     bell.classList.remove("ringing");
     alarmAt.innerText = "No alarm set yet💤";
+    if(navigator.vibrate){
+        navigator.vibrate(0);
+        clearInterval(vibrationInterval);
+        vibrationInterval = null;
+    }
 })
 
 //for previewBtn 
@@ -101,4 +123,6 @@ previewBtn.addEventListener("click", ()=>{
         alarmSound.currentTime = 0;
     },10000)
 })
+
+
 
